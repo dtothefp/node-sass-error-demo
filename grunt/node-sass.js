@@ -13,18 +13,8 @@ module.exports = function(grunt) {
     var files = glob.sync(path.join(src, '*.scss'));
 
     eachAsync(files, function(file, i, next) {
-      console.log(file);
-
-      //sass.render({
-        //file: file,
-        //outFile: dest
-      //}, function(err, res) {
-        //console.log(err);
-
-        //next();
-      //});
       var outFile = path.join(dest, path.basename(src, '.scss') + '.css');
-      console.log(outFile);
+
       sass.render({
         file: file,
         outFile: dest,
@@ -33,17 +23,17 @@ module.exports = function(grunt) {
           path.join(process.cwd(), 'node_modules/css-smart-grid/sass')
         ]
       }, function (err, res) {
-				if (err) {
-					grunt.log.error(err.message + '\n  ' + 'Line ' + err.line + '  Column ' + err.column + '  ' + path.relative(process.cwd(), err.file) + '\n');
-					grunt.warn('');
-					next(err);
-					return;
-				}
+        if (err) {
+          grunt.log.error(err.message + '\n  ' + 'Line ' + err.line + '  Column ' + err.column + '  ' + path.relative(process.cwd(), err.file) + '\n');
+          grunt.warn('');
+          next(err);
+          return;
+        }
 
         grunt.file.write(outFile, res.css);
 
-				next();
-			});
+        next();
+      });
 
     }.bind(this), done);
 
