@@ -1,0 +1,12 @@
+$pages: home, about, products, contact;
+
+$selector: ();
+
+@each $item in $pages {
+  $selector: $selector, unquote('.#{$item} .nav-#{$item}');
+}
+
+#{$selector} {
+  style: breaks;
+}
+

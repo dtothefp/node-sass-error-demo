@@ -1,23 +1,13 @@
 # node-sass-error-demo
 
-run `grunt`
-
-this will compile sass from `src` using the `node-sass` api that is wrapped in a custom grunt task. you should see an error 
-
+run `grunt works` // see the working build => src/works.scss
+run 'grunt breaks' // see the breaking build => src/breaks.scss
 ```
 >> invalid selector after
->>   Line 33  Column 14  node_modules/css-smart-grid/sass/smart-grid-columns.scss
+>>   Line 7  Column 2  src/breaks.scss
 ```
 
-now comment out the `column-set` mixin in `node_modules/css-smart-grid/scss/smart-grid.scss` on line 21
-
-```
-@media (min-width:$columns-break-point) {
-    @include column-set;
-}
-```
-
-at this point the error should no be thrown
+[reference](http://hugogiraudel.com/2013/07/15/understanding-sass-lists/#section-4) to see breaking syntax
 
 versions of `node-sass/libsass` are as follows
 

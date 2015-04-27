@@ -8,5 +8,7 @@ module.exports = function(grunt) {
     init: true
   });
 
-	grunt.registerTask('default', ['config:dev', 'node-sass']);
+	grunt.registerTask('default', ['config:dev', 'node-sass:works']);
+	grunt.registerTask('works', ['config:dev', 'node-sass:works']);
+	grunt.registerTask('breaks', ['config:dev', 'node-sass:breaks']);
 };
